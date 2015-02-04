@@ -55,7 +55,14 @@
                         <a href="#">Contact</a>
                     </li>
                     <li>
+		      <% if session[:user_id] %>
+		      
+		      <%= link_to 'Log Out', 'logout' %>
+		      
+		      <% else %>
+		      
 		      <%= link_to 'Sign Up', 'sign_up' %>
+		      <% end %>		      
                     </li>		    
                 </ul>
             </div>

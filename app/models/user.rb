@@ -3,7 +3,7 @@ require 'bcrypt'
 class User < ActiveRecord::Base
 
   validates :name, presence: true, length: {minimum: 3}
-  validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/ix }
   validates :password, presence: true, confirmation: true
   validates :password_confirmation, presence:true
 
@@ -13,12 +13,13 @@ class User < ActiveRecord::Base
   end
 
 
-  def authenticate(email, secret)
-    user = User.where(email: email).first
-    if user && user.check_password (secret)
+  def self.authenticate(email, secret)
+    user = User.find_by(email: email)
+    if user && user.check_password(secret)
       user
+    else
+      nil
     end
-    nil
   end
   
   def check_password(secret)
