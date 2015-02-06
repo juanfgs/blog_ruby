@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
-  root to: 'pages#home'
+  root to: 'posts#index'
 
   get 'login', to: 'users#login'
   post 'login', to: 'users#login_process'
