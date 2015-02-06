@@ -78,7 +78,8 @@ ActiveAdmin.setup do |config|
   # doesn't have access to Dashboard, he'll end up in a redirect loop.
   # Method provided here should be defined in application_controller.rb.
    config.on_unauthorized_access = :access_denied
-
+   
+#   config.authorization_adapter = "OnlyUsersAuthorization"
   # == Current User
   #
   # Active Admin will associate actions with the current
@@ -105,7 +106,7 @@ ActiveAdmin.setup do |config|
   #
   # Default:
   # config.logout_link_method = :get
-  config.authorization_adapter = "OnlyAuthorsAuthorization"
+
   # == Root
   #
   # Set the action to call for the root path. You can set different

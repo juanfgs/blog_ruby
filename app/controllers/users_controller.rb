@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     user = User.authenticate(params[:user][:email], params[:user][:password])
     if user
       session[:user_id] = user.id
-      redirect_to '/', flash: { notice: sprintf("Welcome %s",user.name)}
+      redirect_to '/admin/', flash: { notice: sprintf("Welcome %s",user.name)}
     else
       redirect_to :back, flash: {error: "Incorrect User/Password combination"}
     end
