@@ -1,0 +1,31 @@
+                <!-- Blog Post -->
+
+                <!-- Title -->
+                <h1>Author summary:<%= @user.name %></h1>
+
+                <hr>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> Registered on <%= @user.created_at %></p>
+
+                <hr>
+
+                <!-- Preview Image -->
+
+
+                <hr>
+
+                <!-- Post Content -->
+              
+                <p><%= sanitize(@user.summary) %>
+                </p>
+
+                <hr>
+
+		<div class="social-box">
+
+                  <a href="<%= @user.facebook %>"><i  class="social fa fa-facebook-square fa-3x social-fb"></i></a>
+	          <a href="<%= @user.twitter %>"><i class="social fa fa-twitter-square fa-3x social-tw"></i></a>
+	          <a href=""><i  class=" social fa fa-google-plus-square fa-3x social-gp"></i></a>
+		</div>
+
