@@ -2,7 +2,7 @@
 <% @posts.each do |post| %>
 
                 <h2>
-                    <a href="#"><%= post.title %></a>
+                  <%= link_to post.title,  post  %> 
                 </h2>
                 <p class="lead">
                     by <a href="index.php"><%= post.user.name %></a>
@@ -11,9 +11,10 @@
                 <hr>
 		<%= image_tag post.image.url %>
                 <hr>
-                <p><%= post.content %></p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
+<p><%= post.content %></p>
+<%= link_to post, class: 'btn btn-primary' do  %> 
+                Read More <span class="glyphicon glyphicon-chevron-right"></span>
+<% end %>
                 <hr>
 <% end %>
 <%= paginate @posts %>
