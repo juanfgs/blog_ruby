@@ -8,8 +8,8 @@ class UsersController < ApplicationController
     user = User.new
     user.name = params[:user][:name]
     user.email = params[:user][:email]
-    user.hash_password params[:user][:password]
-    user.password_confirmation = BCrypt::Engine.hash_secret(params[:user][:password], user.salt)
+    user.password = params[:user][:password]
+    user.password_confirmation =  BCrypt::Engine.hash_secret(params[:user][:password], user.salt)
     
     if user.save
       redirect_to '/', flash: {notice: "Thank you for registering"}

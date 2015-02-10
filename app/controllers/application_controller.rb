@@ -4,12 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
-  
+
+  def access_denied
+    redirect_to '/', flash: {error: "Access Denied"}
+  end
+
   def current_admin_user
     if session[:user_id]
-      @current_user = User.find session[:user_id]
+      user = User.find session[:user_id]
     else
-      return false
+      false
     end
   end
 
@@ -17,10 +21,6 @@ class ApplicationController < ActionController::Base
     unless current_admin_user
       access_denied
     end
-  end
-  
-  def access_denied
-    redirect_to '/', flash: {error: "Access Denied"}
   end
 
   
