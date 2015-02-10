@@ -1,5 +1,5 @@
 ActiveAdmin.register Post do
-  permit_params :title, :content, :image
+  permit_params :title, :content, :image, :user_id
   scope_to :current_admin_user
 
 
@@ -8,7 +8,7 @@ ActiveAdmin.register Post do
       input :title
       input :content
       f.input :image, hint: f.post.image? ? image_tag(f.post.image.url, height: '100') : content_tag(:span, "Upload JPG/PNG image")
-
+      f.input :user_id, :as => :hidden
     end
     
 
