@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'sign_up', to: 'users#sign_up'
   post 'sign_up', to: 'users#sign_up_process'
   
-  
+    get 'authors', to: 'users#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
