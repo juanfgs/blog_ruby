@@ -16,16 +16,16 @@
 	    <% @users.each do |user|%>
             <div class="col-lg-4 col-sm-6 text-center">
                 <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
-                <h3><%= user.name%>
-                    <small>Job Title</small>
+                <h3>
+		  <%= link_to user.name,  user  %>
+                  <small>Job Title</small>
                 </h3>
                 <p><%= sanitize( user.summary.truncate(190) ) %></p>
 		<div class="social-box">
 
-                  <a href="<% user.facebook %>"><i  class="social fa fa-facebook-square fa-3x social-fb"></i></a>
-	          <a href="<% user.twitter %>"><i class="social fa fa-twitter-square fa-3x social-tw"></i></a>
+                  <a href="<%= user.facebook %>"><i  class="social fa fa-facebook-square fa-3x social-fb"></i></a>
+	          <a href="<%= user.twitter %>"><i class="social fa fa-twitter-square fa-3x social-tw"></i></a>
 	          <a href=""><i  class=" social fa fa-google-plus-square fa-3x social-gp"></i></a>
-	          <a href="mailto:bootsnipp@gmail.com"><i class=" social fa fa-envelope-square fa-3x social-em"></i></a>
 		</div>
             </div>
 	    <% end %>
