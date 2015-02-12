@@ -9,7 +9,8 @@
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span><%= post.created_at%></p>
                 <hr>
-		<%= image_tag post.image.url %>
+		<%= image_tag post.image.url(:large) %>
+
                 <hr>
 <p><%= post.content %></p>
 <%= link_to post, class: 'btn btn-primary' do  %> 
