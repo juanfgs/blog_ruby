@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   
   get 'post/:id', to:'posts#show', as: :post
 
+  get 'auth/:provider/callback', to: 'users#sign_up_process'
 
   
   # The priority is based upon order of creation: first created -> highest priority.

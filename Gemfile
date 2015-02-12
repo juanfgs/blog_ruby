@@ -30,9 +30,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
  
  # Use Unicorn as the app server
 
+ gem 'omniauth'
+
+gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
+
  gem "paperclip", "~> 4.2"
  gem 'kaminari'
-gem 'activeadmin', github: 'activeadmin'
+ gem 'activeadmin', github: 'activeadmin'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

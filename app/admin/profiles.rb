@@ -8,7 +8,7 @@ ActiveAdmin.register User  do
      f.inputs "User" do
        input :name
        input :password
-       input :email      
+       input :uid, label: 'Uid/Email'      
        input :summary
        input :facebook
        input :twitter
@@ -27,7 +27,8 @@ ActiveAdmin.register User  do
     panel "User Information" do
       attributes_table_for user do
         row :name
-        row :email
+        row :uid
+        
       end
     end
     
