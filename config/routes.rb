@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback', to: 'users#sign_up_process'
 
+  post 'comments/create', to: 'comments#create'
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
