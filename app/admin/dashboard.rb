@@ -19,6 +19,9 @@ ActiveAdmin.register_page "Dashboard" do
        end
        column do
          panel "Recent Comments" do
+           Comment.take(5).map do |comment|
+             li link_to(comment.name, admin_post_path(comment))
+           end
          end
        end
      end
