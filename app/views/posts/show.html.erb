@@ -1,63 +1,64 @@
-                <!-- Blog Post -->
+<!-- Blog Post -->
 
-                <!-- Title -->
-                <h1><%= @post.title %></h1>
+<!-- Title -->
+<h1><%= @post.title %></h1>
 
-                <!-- Author -->
-                <p class="lead">
-                    by <a href="#"><%= @post.user.name%></a>
-                </p>
+<!-- Author -->
+<p class="lead">
+  by <a href="#"><%= @post.user.name%></a>
+</p>
 
-                <hr>
+<hr>
 
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on <%= @post.created_at %></p>
+<!-- Date/Time -->
+<p><span class="glyphicon glyphicon-time"></span> Posted on <%= @post.created_at %></p>
 
-                <hr>
+<hr>
 
-                <!-- Preview Image -->
-                <%= image_tag @post.image.url(:large) %>
+<!-- Preview Image -->
+<%= image_tag @post.image.url(:large) %>
 
-                <hr>
+<hr>
 
-                <!-- Post Content -->
-              
-                <p><%= @post.content%>
-                </p>
+<!-- Post Content -->
 
-                <hr>
+<p>
+  <%= @post.content%>
+</p>
 
-                <!-- Blog Comments -->
+<hr>
 
-                <!-- Comments Form -->
-                <div class="well">
-                    <h4>Leave a Comment:</h4>
-                      <%= form_tag("/comments/create", method: "post") do %>
-                      <div class="form-group">
-			<%= text_field  :comment,:name, class: 'form-control', placeholder: 'Enter your Name' %>
-			<%= text_area  :comment,:comment, class: 'form-control', placeholder: 'Your comment...' %>
-			<%= hidden_field  :comment,:post_id, value: @post.id %>
+<!-- Blog Comments -->
 
-                      </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-			<% end %>
-                </div>
+<!-- Comments Form -->
+<div class="well">
+  <h4>Leave a Comment:</h4>
+  <%= form_tag("/comments/create", method: "post") do %>
+  <div class="form-group">
+    <%= text_field  :comment,:name, class: 'form-control', placeholder: 'Enter your Name' %>
+    <%= text_area  :comment,:comment, class: 'form-control', placeholder: 'Your comment...' %>
+    <%= hidden_field  :comment,:post_id, value: @post.id %>
 
-                <hr>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <% end %>
+</div>
 
-                <!-- Posted Comments -->
+<hr>
+
+<!-- Posted Comments -->
 
 
-		<% @post.comments.each do |comment|%>
-                <!-- Comment -->		
-                <div class="media">
+<% @post.comments.each do |comment|%>
+<!-- Comment -->		
+<div class="media">
 
-                    <div class="media-body">
-                        <h4 class="media-heading"><%= comment.name %>
-                            <small><%= comment.created_at %></small>
-                        </h4>
-			<%= comment.comment %>
-                    </div>
-                </div>
-		<% end %>
+  <div class="media-body">
+    <h4 class="media-heading"><%= comment.name %>
+      <small><%= comment.created_at %></small>
+    </h4>
+    <%= comment.comment %>
+  </div>
+</div>
+<% end %>
 
