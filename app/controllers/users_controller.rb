@@ -4,27 +4,22 @@ class UsersController < ApplicationController
     
   end
 
-  def sign_up_process
-    
+  def process_oauth
     authhash = request.env['omniauth.auth']
+    
+    user = User.authenticate_by_oauth(authhash)
+    session[:user_id] = user.id
+    redirect_to '/admin/', flash: { notice: sprintf("Welcome %s",user.name)}
+
+  end
+  
+  def sign_up_process
     user = User.new
-
-    unless authhash
-      user.name = params[:user][:name]
-      user.uid = params[:user][:email]
-      user.password = params[:user][:password]
-      user.password_confirmation = BCrypt::Engine.hash_secret(params[:user][:password_confirmation], user.salt)
-    else
-      if login_user = User.find_by(uid: authhash[:uid], provider: authhash[:provider])  #The user is already registered, this should be moved to login_process somehow
-        session[:user_id] = login_user.id
-        redirect_to '/admin/', flash: { notice: sprintf("Welcome %s",login_user.name)}
-        return
-      end
-      user.provider = authhash[:provider]      
-      user.name = authhash[:info][:name]
-      user.uid = authhash[:uid]
-    end
-
+    user.name = params[:user][:name]
+    user.uid = params[:user][:email]
+    user.password = params[:user][:password]
+    user.password_confirmation = params[:user][:password_confirmation]
+    
     if user.save
         redirect_to '/', flash: {notice: "Thank you for registering"}
     else

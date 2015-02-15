@@ -13,7 +13,9 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence:true, on: :create, if: "provider.nil?"
   
   def hash_password(secret)
-    self.salt = BCrypt::Engine.generate_salt
+    unless self.salt
+      self.salt = BCrypt::Engine.generate_salt
+    end
     BCrypt::Engine.hash_secret(secret, self.salt)
   end
 
@@ -26,10 +28,21 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.authenticate_by_oauth(hash)
+    @user = User.find_by(uid: hash[:uid], provider:hash[:provider])
+    unless @user
+      @user = User.create(uid: hash[:uid], provider:hash[:provider], name: hash[:info][:name])
+    end
+    @user
+  end
+
   def password=(secret)
     write_attribute(:password,hash_password(secret))
   end
-
+  
+  def password_confirmation=(secret)
+    @password_confirmation = hash_password(secret)
+  end
 
   
   def check_password(secret)

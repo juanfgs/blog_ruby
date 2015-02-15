@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root to: 'posts#index'
 
+  get '/posts', to:'posts#index'
+  
   get 'login', to: 'users#login'
   post 'login', to: 'users#login_process'
 
@@ -14,10 +16,12 @@ Rails.application.routes.draw do
   
   get 'author/:id', to:'users#show', as: :user
 
+
   
   get 'post/:id', to:'posts#show', as: :post
 
-  get 'auth/:provider/callback', to: 'users#sign_up_process'
+  
+  get 'auth/:provider/callback', to: 'users#process_oauth'
 
   post 'comments/create', to: 'comments#create'
   
