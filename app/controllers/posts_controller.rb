@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.page params[:page]
+    if params[:term]
+      @posts = Post.search(params[:term]).page params[:page]
+    else
+      @posts = Post.all.page params[:page]    
+    end
+    @posts 
   end
 
   def show

@@ -106,15 +106,17 @@
 
                 <!-- Blog Search Well -->
                 <div class="well">
-                    <h4>Blog Search</h4>
+                  <h4>Blog Search</h4>
+		    <%= form_tag("/posts", method: "get") do %>
                     <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="term">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">
                                 <span class="glyphicon glyphicon-search"></span>
                         </button>
                         </span>
                     </div>
+		    <% end %>
                     <!-- /.input-group -->
                 </div>
 
