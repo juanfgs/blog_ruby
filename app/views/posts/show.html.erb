@@ -23,7 +23,17 @@
 <!-- Post Content -->
 
 <p>
+
   <%= @post.content%>
+  
+  <div id="ratings" data-post="<%= @post.id %>">
+    <h5>Post rating:</h5>
+    <div class="stars">
+
+    </div>
+    <span class="current">Post rate: <span><%= @post.ratings.average(:rating)%></span> </span>
+    <span class="number">Rates: <span><%= @post.ratings.count %></span> </span>
+  </div>  
 </p>
 
 <hr>
