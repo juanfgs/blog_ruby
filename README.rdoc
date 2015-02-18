@@ -1,30 +1,57 @@
 {<img src="https://codeclimate.com/github/juanfgs/blog_ruby/badges/gpa.svg" />}[https://codeclimate.com/github/juanfgs/blog_ruby]
 
-== README
+== Requirements
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+   Ruby: Version 2.1.x
+   Bundler
 
-Things you may want to cover:
+== Getting the source
 
-* Ruby version
+Clone the repository with
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+	git clone https://github.com/juanfgs/blog_ruby.git
+```
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+== Installation
+
+On the project's main folder run
+
+```
+	bundle install
+```
+
+to install  all the project's dependencies
+
+configure alternate database engine if needed, edit: config/database.yml
+
+run :
+```
+	rake db:setup	
+```
+to create the database schema
+
+you're all set, run
+
+```
+	thin start
+```
+
+to start serving the website at 0.0.0.0:3000
+
+== Running Tests
+
+This blog uses RSpec for testing, run tests with
+
+```
+	bundle exec rspec spec
+```
+
+== Gems used
+
+* Paperclip was used to manage image attachments on posts
+* Kaminari for pagination
+* OmnniAuth for OAuth support (login/signup with facebook/twitter)
+* Rspec for automated testing
+
