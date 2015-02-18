@@ -5,7 +5,7 @@
 
 <!-- Author -->
 <p class="lead">
-  by <a href="#"><%= @post.user.name%></a>
+  by <%= link_to @post.user.name, @post.user %>
 </p>
 
 <hr>
