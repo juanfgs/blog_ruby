@@ -33,7 +33,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
  gem 'omniauth'
 
-gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
+ gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
+ gem 'omniauth-facebook', :github => 'mkdynamic/omniauth-facebook'
  gem "recaptcha", :require => "recaptcha/rails"
  gem "paperclip", "~> 4.2"
  gem 'kaminari'
