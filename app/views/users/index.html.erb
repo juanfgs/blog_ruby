@@ -20,7 +20,7 @@
 		  <%= link_to user.name,  user  %>
 
                 </h3>
-                <p><%= sanitize( user.summary.truncate(190) ) %></p>
+                <p><%= sanitize( user.summary ) %></p>
 		<div class="social-box">
 
                   <a href="<%= user.facebook %>"><i  class="social fa fa-facebook-square fa-3x social-fb"></i></a>
