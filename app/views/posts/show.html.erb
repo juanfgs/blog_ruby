@@ -25,13 +25,21 @@
 <p>
 
   <%= @post.content%>
-  
+  <div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
   <div id="ratings" data-post="<%= @post.id %>">
     <h5>Post rating:</h5>
-    <div class="stars">
 
-    </div>
-    <span class="current">Post rate: <span><%= @post.ratings.average(:rating)%></span> </span>
+    <% unless @post.rated? session[:user_id] %>
+    <div class="stars"></div>
+    <% else %>
+    <span class="badge">You've already rated this post</span>
+    <% end %>
+    <span class="current">Post rate: <span><%= @post.ratings.average(:rating) %></span> </span>
     <span class="number">Rates: <span><%= @post.ratings.count %></span> </span>
   </div>  
 </p>

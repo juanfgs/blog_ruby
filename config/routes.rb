@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   post 'comments/create', to: 'comments#create'
   
-  post 'ratings/rate', to: 'ratings#rate'
+  get 'ratings/rate', to: 'ratings#rate'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

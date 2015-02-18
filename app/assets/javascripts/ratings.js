@@ -5,12 +5,21 @@ var rating_widget = function(){
 	var star = $('<span class="star" data-rating="'+i+'" title="'+ titles[i -1] +'"> </span>');
 	star.click(function(){
 	    $.ajax({
-		method: 'POST',
+		method: 'GET',
+		dataType: "json",
 		data: { rating: $(this).attr('data-rating'), post_id: $('#ratings').attr('data-post') },
 		url: '/ratings/rate',
 		success:function(response){
-		    alert('sent' + response);
-		    $('#ratings .stars').hide();
+
+		    if(response.errors){
+			for(error in response.errors){
+			    $('<div class="alert alert-warning" role="alert"><span>'+error+' </span>:  '+response.errors[error]+'</div>').insertAfter('#ratings');
+			}
+		    } else {
+			$('<div class="alert alert-success" role="alert">Post rated!</div>').insertAfter('#ratings');
+			$('#ratings .stars').hide();
+		    }
+			
 		}
 	    });
 	})

@@ -14,4 +14,9 @@ class Post < ActiveRecord::Base
     @posts = Post.where("posts.title LIKE ? OR posts.content LIKE ?", searchtag, searchtag)
   end
   
+  def rated?(user_id)
+    ratings.find_by(user_id: user_id)
+  end
+
+  
 end
