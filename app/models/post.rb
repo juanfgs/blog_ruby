@@ -18,5 +18,8 @@ class Post < ActiveRecord::Base
     ratings.find_by(user_id: user_id)
   end
 
+  def average_rating
+    ratings.average(:rating)
+  end
   
 end

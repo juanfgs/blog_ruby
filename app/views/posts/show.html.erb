@@ -33,7 +33,7 @@
     <% else %>
     <span class="badge">You've already rated this post</span>
     <% end %>
-    <span class="current">Post rate: <span><%= @post.ratings.average(:rating) %></span> </span>
+    <span class="current">Post rate: <span><%= @post.average_rating %></span> </span>
     <span class="number">Rates: <span><%= @post.ratings.count %></span> </span>
   </div>  
 </p>
