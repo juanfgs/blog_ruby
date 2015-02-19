@@ -24,7 +24,7 @@ var rating_widget = function(){
 
 	star.appendTo("#ratings .stars");
     }
-}
+};
 
 $(document).ready(rating_widget);
 $(document).on('page:load',rating_widget);
