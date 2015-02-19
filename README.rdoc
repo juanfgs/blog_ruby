@@ -2,51 +2,53 @@
 
 == Requirements
 
-   Ruby: Version 2.1.x
-   Bundler
+Ruby: Version 2.1.x
+Bundler
+ImageMagick
 
 == Getting the source
 
 Clone the repository with
 
-```
-	git clone https://github.com/juanfgs/blog_ruby.git
-```
+   git clone https://github.com/juanfgs/blog_ruby.git+
 
 
 == Installation
 
 On the project's main folder run
 
-```
-	bundle install
-```
+   bundle install
 
-to install  all the project's dependencies
+
+to install  all the project's dependencies (if needed install ImageMagick from your distribution repositories)
 
 configure alternate database engine if needed, edit: config/database.yml
 
 run :
-```
-	rake db:setup	
-```
+
+   rake db:setup	
+
 to create the database schema
 
 you're all set, run
 
-```
-	thin start
-```
+
+   bundle exec thin start
 
 to start serving the website at 0.0.0.0:3000
+
+or 
+
+   rails server
+   
+to run with WEBBrick
 
 == Running Tests
 
 This blog uses RSpec for testing, run tests with
 
-```
-	bundle exec rspec spec
-```
+   bundle exec rspec spec
+
 
 == Gems used
 
