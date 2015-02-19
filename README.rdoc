@@ -4,6 +4,7 @@
 
 Ruby: Version 2.1.x
 Bundler
+ImageMagick
 
 == Getting the source
 
@@ -19,7 +20,7 @@ On the project's main folder run
    bundle install
 
 
-to install  all the project's dependencies
+to install  all the project's dependencies (if needed install ImageMagick from your distribution repositories)
 
 configure alternate database engine if needed, edit: config/database.yml
 
