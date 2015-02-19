@@ -60,11 +60,11 @@
 		<% unless session[:user_id] %>
 		<%= form_tag("/login", method: "post", class: 'navbar-form navbar-right') do %>
 		<div class="form-group">
-		  <%= text_field  :user,:email, class: 'form-control', placeholder: 'Enter your Email' %>
+		  <%= text_field  :user,:uid, class: 'form-control', placeholder: 'Enter your Email', value: '' %>
 		  
 		</div>
 		<div class="form-group">
-		  <%= password_field  :user,:password, class: 'form-control', placeholder: 'Enter your password' %>
+		  <%= password_field  :user,:password, class: 'form-control', placeholder: 'Enter your password', value:'' %>
 		</div>
 		<button type="submit" class="btn btn-default">Sign In</button>
 		or
