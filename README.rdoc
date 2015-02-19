@@ -37,6 +37,12 @@ you're all set, run
 
 to start serving the website at 0.0.0.0:3000
 
+or 
+
+   rails server
+   
+to run with WEBBrick
+
 == Running Tests
 
 This blog uses RSpec for testing, run tests with
