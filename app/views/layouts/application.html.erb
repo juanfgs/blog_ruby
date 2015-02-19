@@ -50,7 +50,7 @@
                     </li>
 		<% if session[:user_id] %>		    
 		    <li>
-		      <%= link_to 'Log Out', 'logout', class:'btn-sm btn-primary' %>
+		      <%= link_to 'Log Out', '/logout', class:'btn-sm btn-primary' %>
 		    </li>
 		    <li>
 		      <%= link_to 'Admin', '/admin', class:'btn-sm btn-primary' %>
@@ -124,6 +124,7 @@
 
 
                 <!-- Side Widget Well -->
+		<% unless session[:user_id]%>
                 <div class="well">
                   <h4>Login with</h4>
 		  <div class="form-group">
@@ -133,6 +134,7 @@
 		    <a href="/auth/facebook" class="btn btn-primary"><i class="fa fa-facebook"></i> Log In with Facebook</a>
 		    </div>
                 </div>
+		<% end %>
 
             </div>
 
