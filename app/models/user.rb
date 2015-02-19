@@ -1,5 +1,5 @@
 require 'bcrypt'
-
+require 'open-uri'
 class User < ActiveRecord::Base
 
   has_many :posts
@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   
   validates :name, presence: true, length: {minimum: 3}
 
-  has_attached_file :avatar, :styles => { :large =>  "750x370#", :medium => "300x200>", :thumb => "100x50>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :large =>  "750x370#", :medium => "300x200>", :thumb => "100x50>" }, :default_url => ":style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /^image\/(jpg|jpeg|png)$/
   validates_attachment_size :avatar, :less_than => 2.megabytes
   
@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
     @user = User.find_by(uid: hash[:uid], provider:hash[:provider])
     unless @user
       @user = User.create(uid: hash[:uid], provider:hash[:provider], name: hash[:info][:name])
+      if hash[:info][:image]
+        @user.avatar = open(hash[:info][:image])
+      end
+      @user.save
     end
     @user
   end
