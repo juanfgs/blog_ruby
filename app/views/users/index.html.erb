@@ -15,7 +15,8 @@
             </div>
 	    <% @users.each do |user|%>
             <div class="col-lg-4 col-sm-6 text-center">
-	      <%= image_tag user.avatar.url(:medium), class:"img-circle img-center img-responsive" %>
+	      <%= image_tag user.avatar.url(:medium), class:"img-circle center-block img-center img-responsive", id:"avatar" %>
+	      
                 <h3>
 		  <%= link_to user.name,  user  %>
 
