@@ -12,7 +12,8 @@
 		<%= image_tag post.image.url(:large) %>
 
                 <hr>
-<p><%= post.content %></p>
+
+      <p><%= sanitize(truncate(post.content, length: 350)) %></p>
 <%= link_to post, class: 'btn btn-primary' do  %> 
                 Read More <span class="glyphicon glyphicon-chevron-right"></span>
 <% end %>
