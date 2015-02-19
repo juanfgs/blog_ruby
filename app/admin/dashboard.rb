@@ -11,9 +11,10 @@ ActiveAdmin.register_page "Dashboard" do
        column do
          panel "Recent Posts" do
            ul do
-             Post.take(5).map do |post|
+             current_active_admin_user.posts.take(5).map do |post|
                li link_to(post.title, admin_post_path(post))
              end
+       
            end
          end
        end
