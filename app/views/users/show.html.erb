@@ -29,21 +29,4 @@
 </div>
 </div>
 <hr>
-<h3><%= @user.name %> posts:</h3>
-    <% @user.posts.each do |post| %>
-<div class="row">
-  <div class="col-lg-12">
 
-
-    <h5><%= link_to post.title, post %></h5>
-    <div class="col-lg-2">
-      <%= image_tag post.image.url(:thumb) %>
-    </div>
-    <div class="col-lg-10">
-      <p><%= sanitize(truncate(post.content), :length => 150) %></p>
-    </div>
-
-  </div>
-</div>
-<hr>
-    <% end %>
