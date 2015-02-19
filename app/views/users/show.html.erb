@@ -1,27 +1,49 @@
-                <!-- Blog Post -->
+<!-- Blog Post -->
 
-                <!-- Title -->
-                <h1>Author summary:<%= @user.name %></h1>
+<!-- Title -->
+<h1>Author summary:<%= @user.name %></h1>
 
-                <hr>
+<hr>
 
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Registered on <%= @user.created_at %></p>
+<!-- Date/Time -->
+<p><span class="glyphicon glyphicon-time"></span> Registered on <%= @user.created_at %></p>
 
-                <hr>
-		<div class="col-lg-3 col-sm-6">
-		  <%= image_tag @user.avatar.url(:medium), class:"img-circle center-block img-center img-responsive", id:"avatar" %>
-		</div>
-		<div class="col-lg-9 col-sm-6">
 
-                  <p>
-		    <%= sanitize(@user.summary) %>
-                  </p>
-		  <div class="social-box">
+<div class="row">
+<div class="col-lg-3 col-sm-6">
+  <%= image_tag @user.avatar.url(:medium), class:"img-circle center-block img-center img-responsive", id:"avatar" %>
+</div>
+<div class="col-lg-9 col-sm-6">
 
-                    <a href="<%= @user.facebook %>"><i  class="social fa fa-facebook-square fa-3x social-fb"></i></a>
-	            <a href="<%= @user.twitter %>"><i class="social fa fa-twitter-square fa-3x social-tw"></i></a>
-	            <a href=""><i  class=" social fa fa-google-plus-square fa-3x social-gp"></i></a>
-		  </div>
-		</div>
+  <p>
+    <%= sanitize(@user.summary) %>
+  </p>
+  <div class="social-box">
+    <% if @user.facebook %>
+    <a href="<%= @user.facebook %>"><i  class="social fa fa-facebook-square fa-3x social-fb"></i></a>
+    <% end %>
+    <% if @user.twitter %>
+    <a href="<%= @user.twitter %>"><i class="social fa fa-twitter-square fa-3x social-tw"></i></a>
+    <% end%>
+  </div>
+</div>
+</div>
+<hr>
+<p><%= @user.name %> posts:</p>
+    <% @user.posts.each do |post| %>
+<div class="row">
+  <div class="col-lg-12">
 
+
+    <h5><%= link_to post.title, post %></h5>
+    <div class="col-lg-2">
+      <%= image_tag post.image.url(:thumb) %>
+    </div>
+    <div class="col-lg-10">
+      <p><%= sanitize(truncate(post.content), :length => 150) %></p>
+    </div>
+
+  </div>
+</div>
+<hr>
+    <% end %>
