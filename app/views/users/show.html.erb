@@ -19,10 +19,10 @@
     <%= sanitize(@user.summary) %>
   </p>
   <div class="social-box">
-    <% if @user.facebook %>
+    <% if @user.facebook.blank? %>
     <a href="<%= @user.facebook %>"><i  class="social fa fa-facebook-square fa-3x social-fb"></i></a>
     <% end %>
-    <% if @user.twitter %>
+    <% if @user.twitter.blank? %>
     <a href="<%= @user.twitter %>"><i class="social fa fa-twitter-square fa-3x social-tw"></i></a>
     <% end%>
   </div>
