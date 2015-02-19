@@ -10,19 +10,17 @@ var rating_widget = function(){
 		data: { rating: $(this).attr('data-rating'), post_id: $('#ratings').attr('data-post') },
 		url: '/ratings/rate',
 		success:function(response){
-
 		    if(response.errors){
-			for(error in response.errors){
+			for(var error in response.errors){
 			    $('<div class="alert alert-warning" role="alert"><span>'+error+' </span>:  '+response.errors[error]+'</div>').insertAfter('#ratings');
 			}
 		    } else {
 			$('<div class="alert alert-success" role="alert">Post rated!</div>').insertAfter('#ratings');
 			$('#ratings .stars').hide();
 		    }
-			
 		}
 	    });
-	})
+	});
 
 	star.appendTo("#ratings .stars");
     }
