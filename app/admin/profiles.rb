@@ -1,6 +1,6 @@
 ActiveAdmin.register User  do
   actions :all, except: [:new,:destroy]
-  permit_params :name,:password, :email,:summary, :facebook,:twitter
+  permit_params :name,:password, :email,:summary, :facebook,:twitter, :avatar
 
   
   form do |f|
@@ -8,7 +8,8 @@ ActiveAdmin.register User  do
      f.inputs "User" do
        input :name
        input :password
-       input :uid, label: 'Uid/Email'      
+       input :uid, label: 'Uid/Email'
+       f.input :avatar, hint: f.user.avatar? ? image_tag(f.user.avatar.url, height: '100') : content_tag(:span, "Upload JPG/PNG image")
        input :summary
        input :facebook
        input :twitter
