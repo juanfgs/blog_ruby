@@ -7,7 +7,7 @@
                 <p class="lead">
                     by <%= link_to post.user.name, post.user %>
                 </p>
-                <p><span class="glyphicon glyphicon-time"></span><%= post.created_at%></p>
+                <p><span class="glyphicon glyphicon-time"></span><%= post.created_at.strftime("%d %B, %Y at %H:%M ")%></p>
                 <hr>
 		<%= image_tag post.image.url(:large) %>
 
